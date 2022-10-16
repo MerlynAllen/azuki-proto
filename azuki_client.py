@@ -34,14 +34,16 @@ class AzukiPack:
         self.data = data
 
     def pack(self):
-        return struct.pack("<BLHLQ", *[self.ver, self.seq, self.opt, len(self.data)]) + self.data
+        return struct.pack("<BLHQ", *[self.ver, self.seq, self.opt, len(self.data)]) + self.data
 
     @staticmethod
     def unpack(msg):
-        (ver, seq, opt) = struct.unpack("<BLHLQ", msg[:15])
+        (ver, seq, opt) = struct.unpack("<BLHQ", msg[:15])
 
 
 pack = AzukiPack(1, 0, Flags.SYN, b"")
 client.sendto(pack.pack(), (SERVER_ADDR, SERVER_PORT))
 pack.opt = Flags.ACK
-client.sendto(b, (SERVER_ADDR, SERVER_PORT))
+# Jumbo frame
+pack.data = b"Fuck you!!!"*15
+client.sendto(pack.pack(), (SERVER_ADDR, SERVER_PORT))

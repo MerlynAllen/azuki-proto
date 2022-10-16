@@ -1,0 +1,21 @@
+{
+    "configurations": [
+        {
+            "type": "cargo",
+            "name": "Cargo Run Code",
+            "cargoArgs": ["run"],
+            "environment": {
+//                "RUST_BACKTRACE": "1",
+                "RUST_LOG": "trace",
+            },
+        },
+        {
+            "type": "cargo",
+            "name": "Cargo Clean",
+            "cargoArgs": ["clean"],
+            "environment": {
+            },
+        },
+
+    ]
+}

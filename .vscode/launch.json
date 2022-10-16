@@ -7,15 +7,34 @@
         {
             "type": "lldb",
             "request": "launch",
-            "name": "Debug executable 'p2p'",
+            "name": "Debug unit tests in library 'azukiproto'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--lib",
+                    "--package=azukiproto"
+                ],
+                "filter": {
+                    "name": "azukiproto",
+                    "kind": "lib"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'azukiproto'",
             "cargo": {
                 "args": [
                     "build",
-                    "--bin=p2p",
-                    "--package=p2p"
+                    "--bin=azukiproto",
+                    "--package=azukiproto"
                 ],
                 "filter": {
-                    "name": "p2p",
+                    "name": "azukiproto",
                     "kind": "bin"
                 }
             },
@@ -25,16 +44,37 @@
         {
             "type": "lldb",
             "request": "launch",
-            "name": "Debug unit tests in executable 'p2p'",
+            "name": "Debug unit tests in executable 'azukiproto'",
             "cargo": {
                 "args": [
                     "test",
                     "--no-run",
-                    "--bin=p2p",
-                    "--package=p2p"
+                    "--bin=azukiproto",
+                    "--package=azukiproto"
                 ],
                 "filter": {
-                    "name": "p2p",
+                    "name": "azukiproto",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug client mode",
+            "cargo": {
+                "args": [
+                    "run",
+                    "--",
+                    "--mode",
+                    "client",
+                    "--config",
+                    "client.json"
+                ],
+                "filter": {
+                    "name": "azukiproto",
                     "kind": "bin"
                 }
             },

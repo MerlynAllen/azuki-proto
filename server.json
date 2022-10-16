@@ -1,0 +1,7 @@
+{
+    "bind_addr": "::",
+    "bind_port": 12345,
+    "peer_addr": "::1",
+    "peer_port": 12346,
+    "log_level": "trace"
+}
